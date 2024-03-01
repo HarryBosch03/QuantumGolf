@@ -1,8 +1,12 @@
-﻿Shader "Unlit/HalfLambert"
+﻿Shader "Unlit/HalfLambert-Dither"
 {
     Properties
     {
         _Color("Color", Color) = (1, 1, 1, 1)
+        
+        _Start("Start", Range(0.0, 1.0)) = 0
+        _End("End", Range(0.0, 1.0)) = 1
+        _Slope("Slope", float) = 1
     }
     SubShader
     {
@@ -21,16 +25,17 @@
             
             HLSLPROGRAM
             #pragma target 2.0
-            #pragma vertex HalfLambertVertex
-            #pragma fragment HalfLambertFragment
+            #pragma vertex HLDitherVertex
+            #pragma fragment HLDitherFragment
 
             #define _MAIN_LIGHT_SHADOWS_CASCADE
             #define _SHADOWS_SOFT
             #define MAIN_LIGHT_CALCULATE_SHADOWS
 
             float4 _Color;
+            float _Start, _End, _Slope;
 
-            #include "./HalfLambertPass.hlsl"
+            #include "./HLDitherPass.hlsl"
             
             ENDHLSL
         }

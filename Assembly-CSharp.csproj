@@ -12,7 +12,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{23847717-a56f-7dfe-71f5-47e4a81ce455}</ProjectGuid>
+    <ProjectGuid>{0cae5ec6-a459-7ed1-b1df-d98e57aeafab}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -41,7 +41,13 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+    <None Include="Assets\Code\Shaders\Common.hlsl" />
     <None Include="Assets\Code\Shaders\HalfLambert.shader" />
+    <None Include="Assets\Code\Shaders\HalfLambertStructure.hlsl" />
+    <None Include="Assets\Code\Shaders\HalfLambert.hlsl" />
+    <None Include="Assets\Code\Shaders\HalfLambertPass.hlsl" />
+    <None Include="Assets\Code\Shaders\HLDitherPass.hlsl" />
+    <None Include="Assets\Code\Shaders\HLDither.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>

@@ -1,14 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace GolfGame.Player
+namespace GolfGame.Runtime.Player
 {
     public class PlayerBallCam : MonoBehaviour
     {
         public Vector2 distanceClamp;
         public Vector2 pitchClamp;
-        public float collisionCheckRadius = 0.05f;
-        
+
         [Space]
         public float mouseSensitivity;
         public float gamepadSensitivity;
@@ -17,35 +15,37 @@ namespace GolfGame.Player
         public float fieldOfView;
         public float maxVerticalOffset;
 
-        private PlayerController player;
         private Camera cam;
 
         private Vector2 rotation;
         private float distancePercent;
-        
-        public Rigidbody GolfBall => player.golfBall;
-        
+        private Collider[] camColliderList;
+
         private void Awake()
         {
-            player = GetComponentInParent<PlayerController>();
             cam = Camera.main;
+            camColliderList = cam.GetComponentsInChildren<Collider>();
+        }
+
+        public void MoveCamera(Vector3 position, Vector2 panDelta, float zoomDelta)
+        {
+            rotation -= panDelta * gamepadSensitivity;
+            rotation.y = Mathf.Clamp(rotation.y, pitchClamp.x, pitchClamp.y);
+
+            distancePercent = Mathf.Clamp01(distancePercent - zoomDelta * zoomSensitivity * Time.deltaTime);
+
+            transform.position = position;
+            transform.rotation = Quaternion.Euler(0.0f, -rotation.x, 0.0f);
         }
 
         private void Update()
         {
-            if (!GolfBall) return;
-            
-            rotation += player.CameraRotation * gamepadSensitivity;
-            rotation.y = Mathf.Clamp(rotation.y, pitchClamp.x, pitchClamp.y);
-
-            distancePercent = Mathf.Clamp01(distancePercent - player.ZoomInput * zoomSensitivity * Time.deltaTime);
-
             var orientation = Quaternion.Euler(rotation.y, -rotation.x, 0.0f);
             var distance = Mathf.Lerp(distanceClamp.x, distanceClamp.y, distancePercent);
 
             var offset = Vector3.up * Mathf.Abs(Mathf.Cos(rotation.y * Mathf.Deg2Rad)) * maxVerticalOffset;
 
-            cam.transform.position = GolfBall.position + offset + orientation * -Vector3.forward * distance;
+            cam.transform.position = transform.position + offset + orientation * -Vector3.forward * distance;
             cam.transform.rotation = orientation;
             cam.fieldOfView = fieldOfView;
 
@@ -54,21 +54,29 @@ namespace GolfGame.Player
 
         private void CollideCamera()
         {
-            var start = GolfBall.position;
-            var end = cam.transform.position;
-            var distance = (end - start).magnitude;
-            var direction = (end - start) / distance;
-
-            if (Physics.SphereCast(new Ray(start, direction), collisionCheckRadius, out var hit, distance))
+            foreach (var collider in camColliderList)
             {
-                cam.transform.position = hit.point + hit.normal * collisionCheckRadius;
-            }
-        }
+                var bounds = collider.bounds;
+                var others = Physics.OverlapBox(bounds.center, bounds.extents, Quaternion.identity, 0b1);
+                foreach (var other in others)
+                {
+                    if (other.transform.IsChildOf(cam.transform)) continue;
+                    
+                    if (!Physics.ComputePenetration
+                        (
+                            collider,
+                            collider.transform.position,
+                            collider.transform.rotation,
+                            other,
+                            other.transform.position,
+                            other.transform.rotation,
+                            out var normal,
+                            out var distance
+                        )) continue;
 
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.green; 
-            Gizmos.DrawWireSphere(Camera.main.transform.position, collisionCheckRadius);
+                    cam.transform.position += normal * distance;
+                }
+            }
         }
     }
 }
