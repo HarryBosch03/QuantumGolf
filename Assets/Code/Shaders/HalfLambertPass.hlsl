@@ -1,18 +1,24 @@
 #include "./HalfLambert.hlsl"
 #include "./HalfLambertStructure.hlsl"
 
-Varyings HalfLambertVertex(Attributes v)
+Varyings HalfLambertVertex(Attributes input)
 {
     Varyings o;
-    o.positionWS = TransformObjectToWorld(v.positionOS);
+    
+    UNITY_SETUP_INSTANCE_ID(input);
+    UNITY_TRANSFER_INSTANCE_ID(input, o);
+    
+    o.positionWS = TransformObjectToWorld(input.positionOS);
     o.positionCS = TransformWorldToHClip(o.positionWS);
-    o.normalWS = TransformObjectToWorldNormal(v.normalOS);
-    o.uv = v.uv;
+    o.normalWS = TransformObjectToWorldNormal(input.normalOS);
+    o.uv = input.uv;
     return o;
 }
 
 half4 HalfLambertFragment(Varyings input) : SV_Target
 {
+    UNITY_SETUP_INSTANCE_ID(input);
+    
     float3 albedo = _Color.rgb;
     float alpha = _Color.a;
     

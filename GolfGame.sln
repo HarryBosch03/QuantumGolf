@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GolfGame", "GolfGame.csproj", "{18df50e1-b009-1735-c1dc-2eeade33c464}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GolfGame.Editor", "GolfGame.Editor.csproj", "{affffb9b-6bb8-7a6b-0920-0e7acd6c19a2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GolfGame.Runtime", "GolfGame.Runtime.csproj", "{704b206d-f9e9-bd6d-c564-b630fc553795}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{23847717-a56f-7dfe-71f5-47e4a81ce455}"
 EndProject
@@ -10,8 +12,10 @@ Global
 		Debug|Any CPU = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{18df50e1-b009-1735-c1dc-2eeade33c464}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{18df50e1-b009-1735-c1dc-2eeade33c464}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{affffb9b-6bb8-7a6b-0920-0e7acd6c19a2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{affffb9b-6bb8-7a6b-0920-0e7acd6c19a2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{704b206d-f9e9-bd6d-c564-b630fc553795}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{704b206d-f9e9-bd6d-c564-b630fc553795}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{23847717-a56f-7dfe-71f5-47e4a81ce455}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{23847717-a56f-7dfe-71f5-47e4a81ce455}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection

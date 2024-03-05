@@ -12,7 +12,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace>GolfGame.Runtime</RootNamespace>
-    <ProjectGuid>{03474db1-080b-477e-f10a-db3c5ddaddf0}</ProjectGuid>
+    <ProjectGuid>{704b206d-f9e9-bd6d-c564-b630fc553795}</ProjectGuid>
     <ProjectTypeGuids>{E097FAD1-6243-4DAD-9C02-E9B9EFC3FFC1};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -614,16 +614,16 @@
       <HintPath>C:\Program Files\Unity\Hub\Editor\2022.3.16f1\Editor\Data\NetStandard\compat\2.1.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
-      <HintPath>D:\Documents\Development\Unity\Projects\QuantumGolf\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
+      <HintPath>D:\Data\Development\Unity\GolfGame\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.InputSystem">
-      <HintPath>D:\Documents\Development\Unity\Projects\QuantumGolf\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
+      <HintPath>D:\Data\Development\Unity\GolfGame\Library\ScriptAssemblies\Unity.InputSystem.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>D:\Documents\Development\Unity\Projects\QuantumGolf\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
+      <HintPath>D:\Data\Development\Unity\GolfGame\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>D:\Documents\Development\Unity\Projects\QuantumGolf\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+      <HintPath>D:\Data\Development\Unity\GolfGame\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

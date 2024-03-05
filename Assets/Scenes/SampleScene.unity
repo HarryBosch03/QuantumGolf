@@ -463,7 +463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputAsset: {fileID: -944628639613478452, guid: 87fe154c061957e4eb36f932283ecb61, type: 3}
   golfBall: {fileID: 100200574}
-  putter: {fileID: 49518782}
+  putter: {fileID: 0}
 --- !u!1 &526766225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1340,8 +1340,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42575110e3a580141bb53b8f56f6c432, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   material: {fileID: 2100000, guid: bfb6cd5d0d950d84f9a58616ae20966b, type: 2}
+  submeshIndex: 0
+  shells: 16
+  distance: 0.1
+  debug: (0.00, 0.00, 0.00, 1.00)
 --- !u!1 &1667438730
 GameObject:
   m_ObjectHideFlags: 0
